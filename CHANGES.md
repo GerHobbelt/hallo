@@ -1,9 +1,10 @@
 Hallo Editor ChangeLog
 ======================
 
-## 1.0.3 (git master)
+## 1.0.3 (September 10th 2013)
 
 * Ported the build environment to [Grunt](http://gruntjs.com)
+* Updated Bower packaging, and moved built Hallo version to `dist`
 
 ## 1.0.2 (February 18th 2013)
 
