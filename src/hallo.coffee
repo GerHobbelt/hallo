@@ -104,6 +104,7 @@ http://hallojs.org
       forceStructured: true
       checkTouch: true
       touchScreen: null
+      alwaysVisible: false
 
     _create: ->
       @id = @_generateUUID()
@@ -118,11 +119,14 @@ http://hallojs.org
           buttonCssClass: @options.buttonCssClass
         jQuery(@element)[plugin] options
 
-      @element.one 'halloactivated', =>
-        # We will populate the toolbar the first time this
-        # editable is activated. This will make multiple
-        # Hallo instances on same page load much faster
+      if @options.toolbar is 'halloToolbarFixed' and @options.alwaysVisible
         @_prepareToolbar()
+      else
+        @element.one 'halloactivated', =>
+          # We will populate the toolbar the first time this
+          # editable is activated. This will make multiple
+          # Hallo instances on same page load much faster
+          @_prepareToolbar()
 
       @originalContent = @getContents()
 
@@ -310,6 +314,7 @@ http://hallojs.org
         parentElement: @options.parentElement
         toolbar: @toolbar
         positionAbove: @options.toolbarPositionAbove
+        alwaysVisible: @options.alwaysVisible
 
       toolbarOptions = jQuery.extend({}, defaults, @options.toolbarOptions)
       @element[@options.toolbar] toolbarOptions

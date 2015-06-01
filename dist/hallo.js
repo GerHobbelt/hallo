@@ -24,7 +24,8 @@
         placeholder: '',
         forceStructured: true,
         checkTouch: true,
-        touchScreen: null
+        touchScreen: null,
+        alwaysVisible: false
       },
       _create: function() {
         var options, plugin, _ref,
@@ -46,9 +47,13 @@
           });
           jQuery(this.element)[plugin](options);
         }
-        this.element.one('halloactivated', function() {
-          return _this._prepareToolbar();
-        });
+        if (this.options.toolbar === 'halloToolbarFixed' && this.options.alwaysVisible) {
+          this._prepareToolbar();
+        } else {
+          this.element.one('halloactivated', function() {
+            return _this._prepareToolbar();
+          });
+        }
         return this.originalContent = this.getContents();
       },
       _init: function() {
@@ -261,7 +266,8 @@
           editable: this,
           parentElement: this.options.parentElement,
           toolbar: this.toolbar,
-          positionAbove: this.options.toolbarPositionAbove
+          positionAbove: this.options.toolbarPositionAbove,
+          alwaysVisible: this.options.alwaysVisible
         };
         toolbarOptions = jQuery.extend({}, defaults, this.options.toolbarOptions);
         this.element[this.options.toolbar](toolbarOptions);
@@ -2765,7 +2771,12 @@
         this.toolbar = this.options.toolbar;
         this.toolbar.show();
         jQuery(this.options.parentElement).append(this.toolbar);
-        this._bindEvents();
+        if (!this.options.alwaysVisible) {
+          this._bindEvents();
+        } else {
+          this.setPosition();
+          this.toolbar.show();
+        }
         jQuery(window).resize(function(event) {
           return _this.setPosition();
         });

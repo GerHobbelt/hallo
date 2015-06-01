@@ -21,7 +21,11 @@
 
       jQuery(@options.parentElement).append @toolbar
 
-      @_bindEvents()
+      unless @options.alwaysVisible
+        @_bindEvents()
+      else
+        @setPosition()
+        @toolbar.show()
 
       jQuery(window).resize (event) =>
         @setPosition()
@@ -73,7 +77,7 @@
         topOffset = @options.affixTopOffset
         elementTop = offset.top - (@toolbar.height() + @options.affixTopOffset)
         elementBottom = (height - topOffset) + (offset.top - @toolbar.height())
-        
+
         if scrollTop > elementTop && scrollTop < elementBottom
           @toolbar.css('position', 'fixed')
           @toolbar.css('top', @options.affixTopOffset)
