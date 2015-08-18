@@ -2,7 +2,7 @@
   "name": "hallo-winrt",
   "description": "Fork of Henri Bergius' Hallo project (http://hallojs.org), to work on WinRT",
   "author": "roryok",
-  "homepage": "http://hallojs.org",
+  "homepage": "http://github.com/roryok/hallo-winrt",
   "version": "1.1.2",
   "dependencies": {},
   "devDependencies": {
