@@ -1,5 +1,5 @@
 {
-  "name": "hallo",
+  "name": "hallo-winrt",
   "main": "./dist/hallo.js",
   "license": "MIT",
   "ignore": [
