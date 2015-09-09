@@ -131,3 +131,5 @@ module.exports = ->
   @registerTask 'build', ['bower-install-simple', 'coffee', 'concat', 'clean', 'uglify']
   @registerTask 'test', ['coffeelint', 'build', 'qunit']
   @registerTask 'crossbrowser', ['test', 'connect', 'saucelabs-qunit']
+  @registerTask 'default', ['build']
+  
