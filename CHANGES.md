@@ -1,6 +1,14 @@
 Hallo Editor ChangeLog
 ======================
 
+## 1.1.1 (January 21st 2015)
+
+* Switch everything to use dependencies installed via Bower instead of in-repository
+
+## 1.1.0 (January 21st 2015)
+
+* Compatibility with Font Awesome 4.x
+
 ## 1.0.4 (September 10th 2013)
 
 * Plugin instance fetching is now more robust and gives better errors on plugins not compatible with jQuery 1.10
